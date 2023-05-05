@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    MyBlog
+{% endblock %}
+
+
+{% block content %}
+    <h1>Welcome to MyBlog</h1>
+
+    <p class="::selection">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut tempore mollitia ipsam a, qui ab repudiandae laudantium non. Aliquam doloribus facilis voluptate quibusdam minima a totam quisquam ex, cupiditate tempora!</p>
+
+    {% for post in posts %}
+        <a href="{{ url_for('post', post_id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="badge bg-secondary">{{ post['created'] }}</span>
+        
+        <a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge bg-warning">Edit</span>
+        </a>
+        <hr>
+    {% endfor %}
+
+
+{% endblock %}
